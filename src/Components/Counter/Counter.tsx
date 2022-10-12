@@ -2,13 +2,14 @@ import React from "react";
 import './Counter.css'
 
 type counterProps = {
-	value: number
+	maxValue: boolean
+	counter: number
 }
 
-const Counter: React.FC<counterProps> = ({value}) => {
+const Counter: React.FC<counterProps> = ({maxValue,counter}) => {
 	return (
 		<div className="Counter-Wrapper">
-			<div className={value === 5 ? "MaxCount": ""}>{value}</div>
+			<div className={maxValue ? "MaxCount": ""}>{counter}</div>
 		</div>
 	);
 };

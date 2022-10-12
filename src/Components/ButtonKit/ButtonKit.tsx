@@ -2,7 +2,7 @@ import React, {memo} from "react";
 import "./ButtonKit.css"
 
 type ButtonKitProps = {
-	value: boolean
+	value?: boolean
 	callBack: () => void
 	title: string
 }
