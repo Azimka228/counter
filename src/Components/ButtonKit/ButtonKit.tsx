@@ -1,10 +1,11 @@
-import React, {memo} from "react";
+import React from "react";
 import "./ButtonKit.css"
 
 type ButtonKitProps = {
 	value?: boolean
 	callBack: () => void
 	title: string
+
 }
 
 const ButtonKit: React.FC<ButtonKitProps> = ({value, callBack, title}) => {
@@ -13,4 +14,4 @@ const ButtonKit: React.FC<ButtonKitProps> = ({value, callBack, title}) => {
 	);
 };
 
-export default memo(ButtonKit);
+export default (ButtonKit);

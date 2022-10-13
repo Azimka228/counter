@@ -1,0 +1,10 @@
+.App {
+    display: grid;
+    border: 2px solid lightskyblue;
+    border-radius: 20px;
+    padding: 20px;
+    height: 200px;
+    width: 400px;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+}

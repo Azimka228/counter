@@ -5,3 +5,7 @@
     background-color: lightskyblue;
     border-radius: 20px;
 }
+#root > div > div.CounterSettings-Wrapper > div.error > input[type=number]{
+    color:red;
+    border: red 1px solid;
+}
