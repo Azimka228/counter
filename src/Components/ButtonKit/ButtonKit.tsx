@@ -1,17 +1,15 @@
-import React from "react";
+import React, {MouseEventHandler, PropsWithChildren} from "react";
 import "./ButtonKit.css"
 
 type ButtonKitProps = {
 	value?: boolean
-	callBack: () => void
-	title: string
-
+	callBack: MouseEventHandler<HTMLButtonElement>
 }
 
-const ButtonKit: React.FC<ButtonKitProps> = ({value, callBack, title}) => {
+const ButtonKit: React.FC<PropsWithChildren<ButtonKitProps>> = ({value, callBack, children}) => {
 	return (
-		<button disabled={value} onClick={callBack}>{title}</button>
+		<button disabled={value} onClick={callBack}>{children}</button>
 	);
 };
 
-export default (ButtonKit);
+export default ButtonKit;

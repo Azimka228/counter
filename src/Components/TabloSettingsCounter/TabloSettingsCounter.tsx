@@ -1,20 +1,23 @@
-import React, {useState} from "react";
+import React, {MouseEventHandler, useState} from "react";
 import ButtonKit from "../ButtonKit/ButtonKit";
 import "./TabloSettingsCounter.css"
 import CounterSettings from "./CounterSettings/CounterSettings";
 import {counterSettingValueType} from "../../App";
+import {useNavigate} from "react-router";
 
 type TabloPropsType = {
 	UpdateCounterValue: (e: counterSettingValueType) => void
+	counterSetting:counterSettingValueType
 }
 export type tabloSettingsValueErrorType = {
 	maxValue: boolean
 	minValue: boolean
 }
-const TabloSettingsCounter: React.FC<TabloPropsType> = ({UpdateCounterValue}) => {
+const TabloSettingsCounter: React.FC<TabloPropsType> = ({UpdateCounterValue, counterSetting}) => {
+	const navigate = useNavigate();
 	const [tabloSettingsValue, setTabloCounterSettingsValue] = useState<counterSettingValueType>({
-		maxValue: 5,
-		minValue: 0
+		maxValue: counterSetting.maxValue,
+		minValue: counterSetting.minValue
 	})
 	const [tabloSettingsValueError, setTabloSettingsValueError] = useState<tabloSettingsValueErrorType>({
 		maxValue: false,
@@ -32,8 +35,14 @@ const TabloSettingsCounter: React.FC<TabloPropsType> = ({UpdateCounterValue}) =>
 		setTabloCounterSettingsValue({...NewObj})
 		setTabloSettingsValueError({...NewErrorObj})
 	}
-	const setCounterValue = () => {
-		UpdateCounterValue(tabloSettingsValue)
+
+	const btnSetClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+		if (tabloSettingsValueError.maxValue || tabloSettingsValueError.minValue) {
+			event.preventDefault()
+		} else {
+			UpdateCounterValue(tabloSettingsValue)
+			navigate('/')
+		}
 	}
 
 	return (
@@ -43,7 +52,7 @@ const TabloSettingsCounter: React.FC<TabloPropsType> = ({UpdateCounterValue}) =>
 							 tabloSettingsValueError={tabloSettingsValueError}/>
 			<div className="Buttons-wrapper">
 				<ButtonKit value={tabloSettingsValueError.maxValue || tabloSettingsValueError.minValue}
-						   callBack={setCounterValue} title="set"/>
+						   callBack={btnSetClickHandler}>set</ButtonKit>
 			</div>
 		</div>
 	);
