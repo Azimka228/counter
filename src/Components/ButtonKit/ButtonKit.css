@@ -1,19 +1,20 @@
-.Buttons-wrapper{
+.Buttons-wrapper {
     border: 2px solid lightskyblue;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
     padding: 5%;
+    grid-template-areas:
+    "A   B   C ";
 }
-#root > div > div.Buttons-wrapper > button > a {
-    color: black;
-}
+
 .Buttons-wrapper > button {
     background-color: lightskyblue;
     border-radius: 20px;
     align-items: center;
+    border: 2px solid #64a6cf;
 }
+
 .Buttons-wrapper > button > a {
     display: flex;
     justify-content: center; /*Центрирование по горизонтали*/
@@ -22,9 +23,11 @@
     height: 100%;
     text-decoration: none;
 }
+
 .Buttons-wrapper > button:hover {
-   cursor: pointer;
+    cursor: pointer;
 }
+
 .Buttons-wrapper > button:disabled:hover {
     cursor: default;
 }

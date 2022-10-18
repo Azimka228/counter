@@ -2,13 +2,20 @@ import React, {MouseEventHandler, PropsWithChildren} from "react";
 import "./ButtonKit.css"
 
 type ButtonKitProps = {
-	value?: boolean
-	callBack: MouseEventHandler<HTMLButtonElement>
+	btnDisabling?: boolean
+	onClickCallBack: MouseEventHandler<HTMLButtonElement>
+	buttonStyles?: object
 }
 
-const ButtonKit: React.FC<PropsWithChildren<ButtonKitProps>> = ({value, callBack, children}) => {
+const ButtonKit: React.FC<PropsWithChildren<ButtonKitProps>> = (
+	{
+		buttonStyles,
+		btnDisabling,
+		onClickCallBack,
+		children
+	}) => {
 	return (
-		<button disabled={value} onClick={callBack}>{children}</button>
+		<button disabled={btnDisabling} style={buttonStyles} onClick={onClickCallBack}>{children}</button>
 	);
 };
 

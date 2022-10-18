@@ -1,0 +1,8 @@
+.CounterSettings-Wrapper > div >  input{
+    border-radius: 10px;
+    border: 2px solid #64a6cf;
+}
+.CounterSettings-Wrapper > div > input:focus{
+    outline:none;
+    border: 2px solid #4b91bc;
+}

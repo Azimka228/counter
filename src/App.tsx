@@ -4,7 +4,6 @@ import TabloSettingsCounter from "./Components/TabloSettingsCounter/TabloSetting
 import TabloCounter from "./Components/TabloCounter/TabloCounter";
 import {Route, Routes} from "react-router-dom";
 
-
 export type counterSettingValueType = {
 	maxValue: number
 	minValue: number
@@ -49,7 +48,6 @@ function App() {
 				</Route>
 			</Routes>
 		</>
-
 
 	);
 }

@@ -7,7 +7,7 @@ import {useNavigate} from "react-router";
 
 type TabloPropsType = {
 	UpdateCounterValue: (e: counterSettingValueType) => void
-	counterSetting:counterSettingValueType
+	counterSetting: counterSettingValueType
 }
 export type tabloSettingsValueErrorType = {
 	maxValue: boolean
@@ -41,18 +41,20 @@ const TabloSettingsCounter: React.FC<TabloPropsType> = ({UpdateCounterValue, cou
 			event.preventDefault()
 		} else {
 			UpdateCounterValue(tabloSettingsValue)
-			navigate('/')
+			navigate("/")
 		}
 	}
 
 	return (
 		<div className="App">
 			<CounterSettings counterSettingValue={tabloSettingsValue}
-							 updateCounterSettingValue={updateCounterSettingValue}
-							 tabloSettingsValueError={tabloSettingsValueError}/>
+																				updateCounterSettingValue={updateCounterSettingValue}
+																				tabloSettingsValueError={tabloSettingsValueError}/>
 			<div className="Buttons-wrapper">
-				<ButtonKit value={tabloSettingsValueError.maxValue || tabloSettingsValueError.minValue}
-						   callBack={btnSetClickHandler}>set</ButtonKit>
+				<ButtonKit btnDisabling={tabloSettingsValueError.maxValue || tabloSettingsValueError.minValue}
+															onClickCallBack={btnSetClickHandler}
+															buttonStyles={{gridArea:"B"}}
+				>set</ButtonKit>
 			</div>
 		</div>
 	);
