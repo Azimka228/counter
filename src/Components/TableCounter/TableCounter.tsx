@@ -1,21 +1,21 @@
 import React from "react";
 import Counter from "./Counter/Counter";
 import ButtonKit from "../ButtonKit/ButtonKit";
-import "./TabloCounter.css"
+import "./TableCounter.css"
 import {counterSettingValueType} from "../../App";
 import {useNavigate} from "react-router";
 
-type TabloCounterProps = {
-	changeCounterValue: () => void
+type TableCounterProps = {
+	increaseCounterValue: () => void
 	resetCounterValue: () => void
 	counterSetting: counterSettingValueType
 	counter: number
 }
 
-const TabloCounter: React.FC<TabloCounterProps> = (
+const TableCounter: React.FC<TableCounterProps> = (
 	{
 		counter,
-		changeCounterValue,
+		increaseCounterValue,
 		resetCounterValue,
 		counterSetting
 	}) => {
@@ -31,7 +31,7 @@ const TabloCounter: React.FC<TabloCounterProps> = (
 			<Counter maxValue={counter === counterSetting.maxValue} counter={counter}/>
 			<div className="Buttons-wrapper">
 				<ButtonKit btnDisabling={counter === counterSetting.maxValue || counterSetting.maxValue < counter}
-															onClickCallBack={changeCounterValue}>increment</ButtonKit>
+															onClickCallBack={increaseCounterValue}>increment</ButtonKit>
 				<ButtonKit btnDisabling={counter === counterSetting.minValue} onClickCallBack={resetCounterValue}>reset</ButtonKit>
 				<ButtonKit onClickCallBack={btnSettingsClickHandler}>settings</ButtonKit>
 			</div>
@@ -39,4 +39,4 @@ const TabloCounter: React.FC<TabloCounterProps> = (
 	);
 };
 
-export default TabloCounter;
+export default TableCounter;
