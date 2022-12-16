@@ -1,25 +1,25 @@
 import React, {MouseEventHandler, useState} from "react";
 import ButtonKit from "../ButtonKit/ButtonKit";
-import "./TabloSettingsCounter.css"
+import "./TableSettingsCounter.css"
 import CounterSettings from "./CounterSettings/CounterSettings";
 import {counterSettingValueType} from "../../App";
 import {useNavigate} from "react-router";
 
-type TabloPropsType = {
+type TablePropsType = {
 	UpdateCounterValue: (e: counterSettingValueType) => void
 	counterSetting: counterSettingValueType
 }
-export type tabloSettingsValueErrorType = {
+export type tableSettingsValueErrorType = {
 	maxValue: boolean
 	minValue: boolean
 }
-const TabloSettingsCounter: React.FC<TabloPropsType> = ({UpdateCounterValue, counterSetting}) => {
+const TableSettingsCounter: React.FC<TablePropsType> = ({UpdateCounterValue, counterSetting}) => {
 	const navigate = useNavigate();
-	const [tabloSettingsValue, setTabloCounterSettingsValue] = useState<counterSettingValueType>({
+	const [tableSettingsValue, setTableCounterSettingsValue] = useState<counterSettingValueType>({
 		maxValue: counterSetting.maxValue,
 		minValue: counterSetting.minValue
 	})
-	const [tabloSettingsValueError, setTabloSettingsValueError] = useState<tabloSettingsValueErrorType>({
+	const [tableSettingsValueError, setTableSettingsValueError] = useState<tableSettingsValueErrorType>({
 		maxValue: false,
 		minValue: false
 	})
@@ -32,32 +32,32 @@ const TabloSettingsCounter: React.FC<TabloPropsType> = ({UpdateCounterValue, cou
 			maxValue: max < 0 || max === min,
 			minValue: min < 0 || max === min || min > max
 		}
-		setTabloCounterSettingsValue({...NewObj})
-		setTabloSettingsValueError({...NewErrorObj})
+		setTableCounterSettingsValue({...NewObj})
+		setTableSettingsValueError({...NewErrorObj})
 	}
 
 	const btnSetClickHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
-		if (tabloSettingsValueError.maxValue || tabloSettingsValueError.minValue) {
+		if (tableSettingsValueError.maxValue || tableSettingsValueError.minValue) {
 			event.preventDefault()
 		} else {
-			UpdateCounterValue(tabloSettingsValue)
+			UpdateCounterValue(tableSettingsValue)
 			navigate("/")
 		}
 	}
 
 	return (
 		<div className="App">
-			<CounterSettings counterSettingValue={tabloSettingsValue}
+			<CounterSettings counterSettingValue={tableSettingsValue}
 																				updateCounterSettingValue={updateCounterSettingValue}
-																				tabloSettingsValueError={tabloSettingsValueError}/>
+																				tableSettingsValueError={tableSettingsValueError}/>
 			<div className="Buttons-wrapper">
-				<ButtonKit btnDisabling={tabloSettingsValueError.maxValue || tabloSettingsValueError.minValue}
+				<ButtonKit btnDisabling={tableSettingsValueError.maxValue || tableSettingsValueError.minValue}
 															onClickCallBack={btnSetClickHandler}
-															buttonStyles={{gridArea:"B"}}
+															buttonStyles={{gridArea: "B"}}
 				>set</ButtonKit>
 			</div>
 		</div>
 	);
 };
 
-export default TabloSettingsCounter;
+export default TableSettingsCounter;

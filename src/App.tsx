@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./App.css";
-import TabloSettingsCounter from "./Components/TabloSettingsCounter/TabloSettingsCounter";
-import TabloCounter from "./Components/TabloCounter/TabloCounter";
+import TableCounter from "./Components/TableCounter/TableCounter";
 import {Route, Routes} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "./bll/store";
+import {increaseCountAC, resetCountAC, updateCountAC} from "./bll/counter-reducer";
+import TableSettingsCounter from "./Components/TableSettingsCounter/TableSettingsCounter";
 
 export type counterSettingValueType = {
 	maxValue: number
@@ -10,41 +13,36 @@ export type counterSettingValueType = {
 }
 
 function App() {
-	const ValueAsString = localStorage.getItem("CounterValue")
-	const [counter, setCounter] = useState(ValueAsString ? +ValueAsString : 0)
-	const [counterSetting, setCounterSetting] = useState<counterSettingValueType>({
-		maxValue: 5,
-		minValue: 0,
-	})
-	useEffect(() => {
-		localStorage.setItem("CounterValue", JSON.stringify(counter))
-	}, [counter])
+	const dispatch = useDispatch()
+	const counter = useSelector<AppStateType, number>(state => state.counter.currentValue)
+	const counterSetting = useSelector<AppStateType, counterSettingValueType>(state => state.counter.settings)
 
-	const changeCounterValue = () => {
-		setCounter(counter + 1)
+	const increaseCounterValue = () => {
+		const action = increaseCountAC()
+		dispatch(action)
 	}
 	const resetCounterValue = () => {
-		setCounter(counterSetting.minValue)
+		const action = resetCountAC()
+		dispatch(action)
 	}
 	const UpdateCounterValue = (e: counterSettingValueType) => {
-		setCounterSetting(e)
-		setCounter(e.minValue)
+		const action = updateCountAC(e)
+		dispatch(action)
 	}
 	return (
 		<>
 			<Routes>
-				<Route path="/settings" element={<TabloSettingsCounter
+				<Route path="/settings" element={<TableSettingsCounter
 					UpdateCounterValue={UpdateCounterValue}
 					counterSetting={counterSetting}
 				/>}>
 				</Route>
-				<Route path="/" element={<TabloCounter
-					changeCounterValue={changeCounterValue}
+				<Route path="/" element={<TableCounter
+					increaseCounterValue={increaseCounterValue}
 					resetCounterValue={resetCounterValue}
 					counterSetting={counterSetting}
 					counter={counter}
 				/>}>
-
 				</Route>
 			</Routes>
 		</>
