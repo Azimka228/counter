@@ -37,7 +37,7 @@ function App() {
 					counterSetting={counterSetting}
 				/>}>
 				</Route>
-				<Route path="/" element={<TableCounter
+				<Route path="/counter" element={<TableCounter
 					increaseCounterValue={increaseCounterValue}
 					resetCounterValue={resetCounterValue}
 					counterSetting={counterSetting}

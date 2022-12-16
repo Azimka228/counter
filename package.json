@@ -1,6 +1,6 @@
 {
-  "name": "examingweek",
-  "homepage": "https://azimka228.github.io/Counter/",
+  "name": "counter",
+  "homepage": "https://azimka228.github.io/counter/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

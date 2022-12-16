@@ -41,7 +41,7 @@ const TableSettingsCounter: React.FC<TablePropsType> = ({UpdateCounterValue, cou
 			event.preventDefault()
 		} else {
 			UpdateCounterValue(tableSettingsValue)
-			navigate("/")
+			navigate("/counter")
 		}
 	}
 
