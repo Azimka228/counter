@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Azimka228/Counter/static/css/main.6fa6ec4c.css",
+    "main.js": "/Azimka228/Counter/static/js/main.d128ce2f.js",
+    "static/js/787.9eb8bad9.chunk.js": "/Azimka228/Counter/static/js/787.9eb8bad9.chunk.js",
+    "index.html": "/Azimka228/Counter/index.html",
+    "main.6fa6ec4c.css.map": "/Azimka228/Counter/static/css/main.6fa6ec4c.css.map",
+    "main.d128ce2f.js.map": "/Azimka228/Counter/static/js/main.d128ce2f.js.map",
+    "787.9eb8bad9.chunk.js.map": "/Azimka228/Counter/static/js/787.9eb8bad9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6fa6ec4c.css",
+    "static/js/main.d128ce2f.js"
+  ]
+}
